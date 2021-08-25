@@ -77,10 +77,10 @@ int8_t calib_zxy_id = 0; // Calib global variable id, used in redo process: 1 X 
 int calib_confirmation = 1888;// Calib line selected id: for ZL and ZR(if line gap is 0.05): -3(-0.15) to 1(0.05); for X and Y: -5(-0.5) to 4(0.4);
 
 // Load Custom Filament temperatures:
-int custom_load_temp = 225;
-int custom_unload_temp = 215;
-int custom_print_temp = 215;
-int custom_bed_temp = 65;
+int custom_load_temp = 220;
+int custom_unload_temp = 210;
+int custom_print_temp = 210;
+int custom_bed_temp = 60;
 
 int cycle_filament = 0; // Filament list number: 0 PLA 1 PVA 2 PET-G 3 ABS 4 Nylon 5 TPU 6 Custom
 
@@ -4410,6 +4410,8 @@ void lcd_fsm_lcd_input_logic(){//We process tasks according to the "LCD_FSM_inpu
 					}else if (axis_steps_per_unit[E_AXIS]<=512 && axis_steps_per_unit[E_AXIS]>=492){
 					sprintf_P(buffer, PSTR("R19"));
 					display.WriteObject(GENIE_OBJ_USERIMAGES,USERIMAGE_INFO_EXTRUDER_SETUP,0);
+					}else if (axis_steps_per_unit[E_AXIS]<=110 && axis_steps_per_unit[E_AXIS]>=90){
+					sprintf_P(buffer, PSTR("RCustom"));
 					}else{
 					display.WriteObject(GENIE_OBJ_USERIMAGES,USERIMAGE_INFO_EXTRUDER_SETUP,1);
 					sprintf_P(buffer, PSTR("%u.%02u"),(unsigned int)axis_steps_per_unit[E_AXIS],(unsigned int)(axis_steps_per_unit[E_AXIS]*100)%100);

@@ -90,7 +90,7 @@
 // 21 = Elefu Ra Board (v3)
 // 88 = 5DPrint D8 Driver Board
 // 999 = Leapfrog
-//15 = BCN3D Sigma Rev2
+// 15 = BCN3D Sigma Rev2
 
 //Rapduch
 //Defining Boards supported
@@ -116,7 +116,7 @@
 //This is the version declaration for Sigma/x, v followed by '-' first indicate the hardware, it must have 2 ditgits. Then the '-' and then the firmware, it has to have 3 digits separets by '.'. -> This is useful to
 //get the hw and fw version to Cura-BCN3D and update the new firmware
 #if BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMA
-	#define VERSION_STRING  "01-2.0.8"
+	#define VERSION_STRING  "Sigma Custom"
 	#define VERSION_NUMBER  138
 #elif BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMAX
 	#define VERSION_STRING  "02-2.0.8"	
@@ -126,7 +126,7 @@
 
 
 #if BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMA
-	#define PRINTER_NAME "BCN3D Sigma"
+	#define PRINTER_NAME "Sigma Custom"
 #elif BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMAX
 	#define PRINTER_NAME "BCN3D Sigmax"
 #endif
@@ -322,10 +322,10 @@
 #define BED_MINTEMP 5
 
 //To clean the extruder's the best temperature configuration
-#define	PLA_LOAD_TEMP			215
-#define	PLA_UNLOAD_TEMP			215
-#define	PLA_PRINT_TEMP			215
-#define PLA_BED_TEMP			65
+#define	PLA_LOAD_TEMP			210
+#define	PLA_UNLOAD_TEMP			210
+#define	PLA_PRINT_TEMP			210
+#define PLA_BED_TEMP			60
 #define PLA_ID					12
 
 #define	ABS_LOAD_TEMP			260
@@ -423,9 +423,9 @@
 	//#define  DEFAULT_Kp 16.51
 	//#define  DEFAULT_Ki 1.17
 	//#define  DEFAULT_Kd 58.05
-	#define  DEFAULT_Kp  15.16
-	#define  DEFAULT_Ki  1.16
-	#define  DEFAULT_Kd  49.38
+	#define  DEFAULT_Kp  17.93
+	#define  DEFAULT_Ki  1.61
+	#define  DEFAULT_Kd  50.01
 
 #endif						
 #endif // PIDTEMP
@@ -785,8 +785,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //#define EEPROM_CHITCHAT
 
 // Preheat Constants
-#define PLA_PREHEAT_HOTEND_TEMP 215
-#define PLA_PREHEAT_HPB_TEMP 45
+#define PLA_PREHEAT_HOTEND_TEMP 210
+#define PLA_PREHEAT_HPB_TEMP 60
 #define PLA_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255
 
 #define ABS_PREHEAT_HOTEND_TEMP 240
@@ -838,10 +838,10 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 //LOAD Filament parameters
 #if BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMA
-	#define BOWDEN_LENGTH 925
+	#define BOWDEN_LENGTH 800
 #endif
 #if BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMAX
-	#define BOWDEN_LENGTH 1100
+	#define BOWDEN_LENGTH 800
 #endif
 #define PURGE_LENGHT_UNLOAD 25.0
 #define PURGE_SPEED_UNLOAD 450.0
@@ -1094,7 +1094,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 	#if MOTHERBOARD == BCN3D_BOARD
 		//#define DEFAULT_AXIS_STEPS_PER_UNIT {160,160,3200,608}  //1/32 microstepping for BCN3D Board
 		#if BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMA
-		#define DEFAULT_AXIS_STEPS_PER_UNIT {80,80,1600,510.90}	  //1/16 microstepping for BCN3D Board
+		#define DEFAULT_AXIS_STEPS_PER_UNIT {80,80,1600,101}	  //1/16 microstepping for BCN3D Board
 		#elif BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMAX
 		#define DEFAULT_AXIS_STEPS_PER_UNIT {80,80,1600,510.90}	  //1/16 microstepping for bondtech kit BCN3D
 		#endif
@@ -1114,21 +1114,21 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 
 #if BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMA
-	#define DEFAULT_MAX_FEEDRATE          {200, 200, 12, 40}    // (mm/sec)
-	#define DEFAULT_MAX_ACCELERATION      {2250,2250,80,800}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+	#define DEFAULT_MAX_FEEDRATE          {200, 200, 12, 50}    // (mm/sec)
+	#define DEFAULT_MAX_ACCELERATION      {500,500,80,800}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 	#define DEFAULT_HYSTERESIS_MM         0, 0, 0, 0  // X, Y, Z, E hysteresis in mm. These are the extra distances that are performed when an axis changes direction to compensate for any mechanical hysteresis your printer has.
 	#define DEFAULT_HYSTERESIS
 	//#define DEFAULT_MAX_ACCELERATION      {2000,2000,50,1000}
 	//#define DEFAULT_MAX_FEEDRATE          {250, 250, 3.5, 50}    // (mm/sec)
 	//#define DEFAULT_MAX_ACCELERATION      {1000,1000,100,100}    // X, Y, Z, E maximum star
 
-	#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
-	#define DEFAULT_RETRACT_ACCELERATION  2000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
+	#define DEFAULT_ACCELERATION          500    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
+	#define DEFAULT_RETRACT_ACCELERATION  500   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 	//#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
 	//#define DEFAULT_RETRACT_ACCELERATION  2000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 
 	// The speed change that does not require acceleration (i.e. the software might assume it can be done instantaneously)
-	#define DEFAULT_XYJERK                5.0    // (mm/sec)
+	#define DEFAULT_XYJERK                10.0    // (mm/sec)
 	#define DEFAULT_ZJERK                 0.4     // (mm/sec)
 	#define DEFAULT_EJERK                 5.0    // (mm/sec)
 #elif BCN3D_PRINTER_SETUP == BCN3D_PRINTER_IS_SIGMAX
@@ -1383,9 +1383,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define FILAMENT_SENSOR_EXTRUDER_NUM	0  //The number of the extruder that has the filament sensor (0,1,2)
 #define MEASUREMENT_DELAY_CM			14  //measurement delay in cm.  This is the distance from filament sensor to middle of barrel
 
-#define DEFAULT_NOMINAL_FILAMENT_DIA  3.0  //Enter the diameter (in mm) of the filament generally used (3.0 mm or 1.75 mm) - this is then used in the slicer software.  Used for sensor reading validation
-#define MEASURED_UPPER_LIMIT          3.30  //upper limit factor used for sensor reading validation in mm
-#define MEASURED_LOWER_LIMIT          1.90  //lower limit factor for sensor reading validation in mm
+#define DEFAULT_NOMINAL_FILAMENT_DIA  1.75  //Enter the diameter (in mm) of the filament generally used (3.0 mm or 1.75 mm) - this is then used in the slicer software.  Used for sensor reading validation
+#define MEASURED_UPPER_LIMIT          2.10  //upper limit factor used for sensor reading validation in mm
+#define MEASURED_LOWER_LIMIT          1.50  //lower limit factor for sensor reading validation in mm
 #define MAX_MEASUREMENT_DELAY			20  //delay buffer size in bytes (1 byte = 1cm)- limits maximum measurement delay allowable (must be larger than MEASUREMENT_DELAY_CM  and lower number saves RAM)
 
 //defines used in the code
